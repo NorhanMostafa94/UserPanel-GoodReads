@@ -14,8 +14,7 @@ import BookDetails from "../Component/Books/Details";
 import Login from "../Component/Forms/login";
 import SignForm from "../Component/Forms/SignUp";
 import Books from "../Component/Search/BooksList";
-import NavBar from "../Component/shared/Navbar";
-import AdminPanel from "../Component/AdminPanel/AdminPanel";
+// import NavBar from "../Component/shared/Navbar";
 
 const Routing = () => {
   return (
@@ -34,7 +33,6 @@ const Routing = () => {
       <Route path="/login" component={Login} />
       <Route exact path="/signup"  component={SignForm} />
       <Route path="/results" component={Books} />
-      <Route path="/admin" component={AdminPanel} />
 
       {/* <Route path='/' component={SearchBar} /> */}
     </Switch>
