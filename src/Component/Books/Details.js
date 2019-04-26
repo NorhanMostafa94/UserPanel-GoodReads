@@ -4,7 +4,6 @@ import Dropdown from 'react-bootstrap/Dropdown';
 import Rating from './Rating';
 import Reviews from './Reviews'
 import { Link } from 'react-router-dom'
-import { books } from '../../data';
 import{getBookById} from '../../API/book'
 import NavBar from '../shared/Navbar'
 

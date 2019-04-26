@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import { Context } from "../../App";
 import { Container, Row } from "react-bootstrap";
 
 import Author from "./Author";

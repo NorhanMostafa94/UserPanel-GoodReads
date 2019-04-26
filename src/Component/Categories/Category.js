@@ -1,11 +1,10 @@
 import React, { Component } from 'react';
 
-import { Container, Row } from 'react-bootstrap';
+import { Container } from 'react-bootstrap';
 
 import Book from '../Books/BookItem'
 import Paging from '../shared/Pagination';
 
-import axios from 'axios';
 
 import { getCategoryById } from './../../API/category';
 
@@ -26,8 +25,6 @@ class CategoryItem extends Component {
 
     }
     render() {
-        const id = this.props.match.params.id;
-
         return (
             // this.state.category.filter(e => e._id === Number(id)).map(t =>
             <div key={this.state.category._id}>
