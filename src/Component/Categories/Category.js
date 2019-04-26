@@ -7,7 +7,7 @@ import Paging from '../shared/Pagination';
 
 import axios from 'axios';
 
-import { getCategoriesById } from './../../API/category';
+import { getCategoryById } from './../../API/category';
 
 class CategoryItem extends Component {
     constructor(props) {
@@ -17,9 +17,12 @@ class CategoryItem extends Component {
         }
     }
 
-    async componentDidMount() {
-        const categoryy = await getCategoriesById(this.props.match.params.id)
-        this.setState({ category: categoryy });
+    componentDidMount() {
+        getCategoryById(this.props.match.params.id)
+        .then(res=>{
+
+            this.setState({ category: res });
+        })
 
     }
     render() {
@@ -32,10 +35,10 @@ class CategoryItem extends Component {
                     <h1 className="cat-header-text">{this.state.category.name}</h1>
                 </div>
                 <Container className="card-container" >
-                    <Row className="justify-content-md-center">
+                    {/* <Row className="justify-content-md-center"> */}
                         {this.state.category.books ? this.state.category.books.map(c => <Book key={c._id} {...c}></Book>) : console.log("error")}
                         {console.log(this.state.category.books)}
-                    </Row>
+                    {/* </Row> */}
                     <Paging />
                 </Container>
             </div>
