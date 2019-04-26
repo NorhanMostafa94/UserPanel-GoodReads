@@ -3,8 +3,6 @@ import "../../../node_modules/bootstrap/dist/css/bootstrap.min.css";
 //  import BookAuthor from '../Authors/Books'
 // import { authors } from "../../data";
 import { getAuthorById } from '../../API/author';
-import { Row } from "react-bootstrap";
-import Book from "../Books/BookItem";
 import NavBar from "../shared/Navbar";
 
 class AuthorDetails extends Component {

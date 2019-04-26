@@ -4,8 +4,6 @@ import { Link } from "react-router-dom";
 
 import Rating from "../Books/Rating";
 
-import {getBookById} from './../../API/book';
-
 class Book extends Component {
   constructor(props){
     super(props);
@@ -13,15 +11,9 @@ class Book extends Component {
       book:{}
     }
   }
-  // componentDidMount(){
-  //   getBookById(this.props._id)
-  //   .then(res=>this.setState({book:res},()=>{
-  //     console.log(this.state.book)
-  //   }))
-  // }
   render() {
     const {
-      id,
+      _id,
       title,
       author,
       cover,
@@ -42,7 +34,7 @@ class Book extends Component {
             />
             <Link
               className="author-details-bok-title"
-              to={`/books/${id}`}
+              to={`/books/${_id}`}
               style={{ textDecoration: "none" }}
             >
               {title}
@@ -57,7 +49,7 @@ class Book extends Component {
               </Link>
             </div>
             <span className="book-details-stars author-details-book-rating ">
-              {<Rating key={id} rating={rating} />}
+              {<Rating key={_id} rating={rating} />}
             </span>
             <span className="book_avg author-details-book-AVGrating ">
               {avgrating}
