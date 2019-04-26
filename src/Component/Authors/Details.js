@@ -16,13 +16,17 @@ class AuthorDetails extends Component {
     };
   }
 
-  componentDidMount() {
-    const ID = this.props.match.params._id;
-    console.log(ID);
+ async componentDidMount() {
+    const ID = this.props.match.params.id;
+    // const targetAuthor = await getAuthorById(ID)
+    // this.setState({ author:targetAuthor });
+    // console.log(ID);
+
+
     getAuthorById(ID)
       .then(auth => {
         
-        this.setState({ author:auth[0] });
+        this.setState({ author:auth });
         
       })
       .catch(err => console.log(err))
@@ -37,6 +41,7 @@ class AuthorDetails extends Component {
     return (
       <>
       {console.log(this.state.author.books)}
+      {console.log(this.state.author)}
         <NavBar />
         <div className="container book-details-block">
           <div className="row">
@@ -71,7 +76,7 @@ class AuthorDetails extends Component {
           </div>
           <div className="row">
             <div className="col-12">
-             <span>{this.state.author.books}</span>
+          
             </div>
           </div>
         </div>

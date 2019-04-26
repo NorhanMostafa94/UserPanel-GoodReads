@@ -8,6 +8,6 @@ export const getBooks = () => {
 }
 
 export const getBookById = async (bookId)=>{
-    const book = await axios.get(`${BACKEND_URL}/api/${bookId}`)
+    const book = await axios.get(`${BACKEND_URL}/api/books/${bookId}`)
     return book.data;
 }

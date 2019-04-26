@@ -5,6 +5,7 @@ import Rating from './Rating';
 import Reviews from './Reviews'
 import { Link } from 'react-router-dom'
 import { books } from '../../data';
+import{getBookById} from '../../API/book'
 import NavBar from '../shared/Navbar'
 
 // const BDETAILS_URL = ' http://localhost:3004/AllBooks';
@@ -12,7 +13,7 @@ class BookDetails extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            books: books,
+            // books: books,
             book: {}
         }
     }
@@ -20,13 +21,23 @@ class BookDetails extends Component {
 
     componentDidMount() {
         const ID = this.props.match.params.id;
-        const foundedBook = this.state.books.filter((book) => {
-            return book.id === Number(ID)
-        })
+        console.log(ID)
+        getBookById(ID)
+             .then(b=>{
+                 this.setState({book:b})
+             })
+             .catch(err=>{
+                 console.log(err)
+             })
+             
+              console.log(this.state.book)
+        // const foundedBook = this.state.books.filter((book) => {
+        //     return book.id === Number(ID)
+        // })
 
-        this.setState(
-            { book: foundedBook[0] }
-        )
+        // this.setState(
+        //     { book: foundedBook[0] }
+        // )
     }
 
 
