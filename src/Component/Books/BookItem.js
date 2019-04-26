@@ -4,7 +4,21 @@ import { Link } from "react-router-dom";
 
 import Rating from "../Books/Rating";
 
+import {getBookById} from './../../API/book';
+
 class Book extends Component {
+  constructor(props){
+    super(props);
+    this.state={
+      book:{}
+    }
+  }
+  // componentDidMount(){
+  //   getBookById(this.props._id)
+  //   .then(res=>this.setState({book:res},()=>{
+  //     console.log(this.state.book)
+  //   }))
+  // }
   render() {
     const {
       id,
@@ -15,8 +29,8 @@ class Book extends Component {
       rating,
       avgrating
     } = this.props;
-    // console.log(this.props)
-    if ((id, title, author, cover, authorID)) {
+    console.log(this.props)
+    if (this.props) {
       return (
         // <Col sm={3}>
         <Card className="card-item col-sm-3">

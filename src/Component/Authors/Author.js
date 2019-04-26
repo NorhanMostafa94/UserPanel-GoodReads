@@ -7,18 +7,18 @@ class Author extends Component {
         const { name, _id, cover } = this.props;
         return (
 
-                <div className="card-team-section">
-                    <div className="card-team">
-                        <div className="card-team__body">
-                            <img src={cover} alt="" />
-                        </div>
-                        <div className="card-team__footer text-center">
-                            <h5 className="footer__title">
-                     <Link className="author-details-bok-title" to={`/authors/${_id}`} style={{ textDecoration: 'none' }}>{name}</Link>
-                            </h5>
-                        </div>
+            <div className="card-team-section">
+                <div className="card-team">
+                    <div className="card-team__body">
+                        <img src={cover} alt="" />
+                    </div>
+                    <div className="card-team__footer text-center">
+                        <h5 className="footer__title">
+                            <Link className="author-details-bok-title" to={`/authors/${_id}`} style={{ textDecoration: 'none' }}>{name}</Link>
+                        </h5>
                     </div>
                 </div>
+            </div>
         );
     }
 }
