@@ -20,11 +20,11 @@ class BookDetails extends Component {
 
 
     componentDidMount() {
-        const ID = this.props.match.params.id;
+        const ID = this.props.match.params.id;;
         console.log(ID)
         getBookById(ID)
              .then(b=>{
-                 this.setState({book:b})
+                this.setState({ book:b });
              })
              .catch(err=>{
                  console.log(err)

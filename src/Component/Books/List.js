@@ -25,7 +25,7 @@ class BooksList extends Component {
         <Container className="card-container">
           <Row className="justify-content-md-center">
             {this.state.books.map(d => (
-              <Book key={d.id} {...d} />
+              <Book key={d._id} {...d} />
             ))}
           </Row>
           <Paging />
