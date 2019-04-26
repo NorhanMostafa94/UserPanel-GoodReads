@@ -2,43 +2,44 @@ import React, { Component } from 'react';
 
 import { Container, Row } from 'react-bootstrap';
 
-import { Context } from '../../App';
-
 import Book from '../Books/BookItem'
-import { categories } from '../../data';
 import Paging from '../shared/Pagination';
 
+import axios from 'axios';
 
+import { getCategoriesById } from './../../API/category';
 
 class CategoryItem extends Component {
-    state = {
-        category: categories
+    constructor(props) {
+        super(props);
+        this.state = {
+            category: {}
+        }
     }
 
+    async componentDidMount() {
+        const categoryy = await getCategoriesById(this.props.match.params.id)
+        this.setState({ category: categoryy });
 
+    }
     render() {
         const id = this.props.match.params.id;
-        return (
 
-            <Context.Consumer>
-                {
-                    value => (
-                        value.state.categories.filter(e => e.id === Number(id)).map(t =>
-                            <div key={t.id}>
-                                <div className="cat-header">
-                                    <h1 className="cat-header-text">{t.name}</h1>
-                                </div>
-                                <Container className="card-container" >
-                                    <Row className="justify-content-md-center">
-                                        {t.books.map(c => <Book key={c.id} {...c}></Book>)}
-                                    </Row>
-                                <Paging/>
-                                </Container>
-                            </div>
-                        )
-                    )
-                }
-            </Context.Consumer>
+        return (
+            // this.state.category.filter(e => e._id === Number(id)).map(t =>
+            <div key={this.state.category._id}>
+                <div className="cat-header">
+                    <h1 className="cat-header-text">{this.state.category.name}</h1>
+                </div>
+                <Container className="card-container" >
+                    <Row className="justify-content-md-center">
+                        {this.state.category.books ? this.state.category.books.map(c => <Book key={c._id} {...c}></Book>) : console.log("error")}
+                        {console.log(this.state.category.books)}
+                    </Row>
+                    <Paging />
+                </Container>
+            </div>
+            // )
         )
 
     }

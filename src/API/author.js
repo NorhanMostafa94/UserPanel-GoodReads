@@ -6,11 +6,8 @@ export const getAuthors = () => {
         .then(res => res.data)
 }
 
-export const getAuthorById = (authorId)=>{
-    return axios.get(`${BACKEND_URL}/api/authors/`,{
-        params:{
-            authorId: authorId
-        }
-    })
-    .then(res => res.data)
+export const getAuthorById = async (authorId)=>{
+    const author = await axios.get(`${BACKEND_URL}/api/authors/${authorId}`)
+    // const books = author.data.books;
+    return author.data;
 }
