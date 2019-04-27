@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import Listing from './Listing'
-import {AllBooks} from '../../data'
-// const URL_ALL_BOOKS = ' http://localhost:3004/AllBooks';
+import { AllBooks } from '../../data'
+import { getUserBooks,getCurrentlyReadingBooks,getWantToReadBooks,getReadBooks } from '../../API/userBooks'
 
 import NavBar from '../shared/Navbar'
 
@@ -9,32 +9,63 @@ class MainPage extends Component {
     constructor(props) {
         super(props)
         this.state = {
-            books: AllBooks,
-            data: AllBooks
+            // books: AllBooks,
+            // data: AllBooks
+            books: [],
+            data: []
         }
     }
+    componentDidMount() {
+        const ID = "5cc42d74d2f2fb43acae162d";
+        // const ID = this.props.match.params.id;
+        getUserBooks(ID)
+            .then(res => {
+                this.setState({
+                    books: res,
+                    data: res
+                });
+            })
+            .catch(err => console.log(err))
+    }
+
     handleClick = (event) => {
+         const ID = "5cc42d74d2f2fb43acae162d";
         event.preventDefault();
         const name = event.target.name;
-        console.log(name)
+        // console.log(name)
 
         if (name === 'all') {
-            this.setState({
-                books: this.state.data,
-
+            getUserBooks(ID)    
+                .then(res => {
+                    this.setState({ books: this.state.data });
+                })
+                .catch(err => console.log(err))
+        }
+        else if(name==='currentlyreading') {
+            getCurrentlyReadingBooks(ID,name)
+            .then(res => {
+                this.setState({ books: res });
+                console.log(this.state.books)
             })
+            .catch(err => console.log(err))
+
+        }
+        else if(name==='wantToRead') {
+            getWantToReadBooks(ID,name)
+            .then(res => {
+                this.setState({ books: res });
+                console.log(this.state.books)
+            })
+            .catch(err => console.log(err))
+
         }
         else {
-            // debugger
-
-            const arr = this.state.data.filter((el) =>
-                el.status === name
-            )
-            this.setState({
-                books: arr
-
+            getReadBooks(ID,name)
+            .then(res => {
+                this.setState({ books: res });
+                console.log(this.state.books)
             })
-
+            .catch(err => console.log(err))
         }
 
     }
@@ -42,30 +73,30 @@ class MainPage extends Component {
 
         return (
             <>
-            <NavBar />
+                <NavBar />
 
-            <div className="container">
-                <div className="row books-header">
-                    <div className="col-6">
-                        <h3 className="books_title-header">My Books</h3>
+                <div className="container">
+                    <div className="row books-header">
+                        <div className="col-6">
+                            <h3 className="books_title-header">My Books</h3>
+                        </div>
+                    </div>
+                    <div className="row">
+                        <div className="col-2 bookshelves">
+                            <h6 className="bookshelves-title">Bookshelves </h6>
+                            <button onClick={this.handleClick} name="all" className="books-link">All</button>
+                            <br />
+                            <button onClick={this.handleClick} name="read" className="books-link">Read</button>
+                            <br />
+                            <button onClick={this.handleClick} name="currentlyreading" className="books-link">Currently Reading</button>
+                            <br />
+                            <button onClick={this.handleClick} name="wantToRead" className="books-link">Want to read</button>
+                        </div>
+                        <div className="col-9 listing">
+                            {<Listing books={this.state.books} ></Listing>}
+                        </div>
                     </div>
                 </div>
-                <div className="row">
-                    <div className="col-2 bookshelves">
-                        <h6 className="bookshelves-title">Bookshelves </h6>
-                        <button onClick={this.handleClick} name="all" className="books-link">All</button>
-                        <br />
-                        <button onClick={this.handleClick} name="read" className="books-link">Read</button>
-                        <br />
-                        <button onClick={this.handleClick} name="currently-reading" className="books-link">Currently Reading</button>
-                        <br />
-                        <button onClick={this.handleClick} name="to-read" className="books-link">Want to read</button>
-                    </div>
-                    <div className="col-9 listing">
-                        {<Listing books={this.state.books} ></Listing>}
-                    </div>
-                </div>
-            </div>
             </>
 
         )

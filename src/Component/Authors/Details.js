@@ -2,6 +2,8 @@ import React, { Component } from "react";
 import "../../../node_modules/bootstrap/dist/css/bootstrap.min.css";
 //  import BookAuthor from '../Authors/Books'
 // import { authors } from "../../data";
+import Book from '../Books/BookItem'
+import { Row, Col } from "react-bootstrap";
 import { getAuthorById } from '../../API/author';
 import NavBar from "../shared/Navbar";
 
@@ -14,7 +16,7 @@ class AuthorDetails extends Component {
     };
   }
 
- async componentDidMount() {
+  componentDidMount() {
     const ID = this.props.match.params.id;
     // const targetAuthor = await getAuthorById(ID)
     // this.setState({ author:targetAuthor });
@@ -23,12 +25,12 @@ class AuthorDetails extends Component {
 
     getAuthorById(ID)
       .then(auth => {
-        
-        this.setState({ author:auth });
-        
+
+        this.setState({ author: auth });
+
       })
       .catch(err => console.log(err))
-      console.log(this.state.author)
+    console.log(this.state.author)
 
     // const foundedAuthor = this.state.authors.filter(author => {
     //   return author.id === Number(ID);
@@ -38,8 +40,8 @@ class AuthorDetails extends Component {
   render() {
     return (
       <>
-      {console.log(this.state.author.books)}
-      {console.log(this.state.author)}
+        {console.log(this.state.author.books)}
+        {console.log(this.state.author)}
         <NavBar />
         <div className="container book-details-block">
           <div className="row">
@@ -48,7 +50,7 @@ class AuthorDetails extends Component {
                 src={this.state.author.cover}
                 className="book-img"
                 alt={this.state.author.cover}
-               
+
               />
             </div>
             <div className="col-lg-7 col-sm-12 desc-block">
@@ -74,7 +76,13 @@ class AuthorDetails extends Component {
           </div>
           <div className="row">
             <div className="col-12">
-          
+              <Row className="justify-content-md-center">
+                {this.state.author.books === undefined
+                  ? ""
+                  : this.state.author.books.map(b => (
+                    <Book key={b._id} {...b} />
+                  ))}
+              </Row>
             </div>
           </div>
         </div>

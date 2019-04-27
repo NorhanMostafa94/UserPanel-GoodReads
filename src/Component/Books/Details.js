@@ -4,10 +4,9 @@ import Dropdown from 'react-bootstrap/Dropdown';
 import Rating from './Rating';
 import Reviews from './Reviews'
 import { Link } from 'react-router-dom'
-import{getBookById} from '../../API/book'
+import { getBookById } from '../../API/book'
 import NavBar from '../shared/Navbar'
 
-// const BDETAILS_URL = ' http://localhost:3004/AllBooks';
 class BookDetails extends Component {
     constructor(props) {
         super(props);
@@ -17,33 +16,25 @@ class BookDetails extends Component {
         }
     }
 
-
     componentDidMount() {
-        const ID = this.props.match.params.id;;
+        const ID = this.props.match.params.id;
         console.log(ID)
         getBookById(ID)
-             .then(b=>{
-                this.setState({ book:b });
-             })
-             .catch(err=>{
-                 console.log(err)
-             })
-             
-              console.log(this.state.book)
-        // const foundedBook = this.state.books.filter((book) => {
-        //     return book.id === Number(ID)
-        // })
+            .then(b => {
+                this.setState({ book: b });
+                console.log(this.state.book)
+            })
+            .catch(err => {
+                console.log(err)
+            })
 
-        // this.setState(
-        //     { book: foundedBook[0] }
-        // )
     }
 
 
     render() {
         return (
             <>
-            <NavBar/>
+                <NavBar />
                 <div className="container book-details-block">
                     <div className="row">
                         <div className="col-lg-3 col-sm-12">
@@ -72,11 +63,10 @@ class BookDetails extends Component {
                         </div>
                         <div className="col-lg-7 col-sm-12 desc-block">
                             <h5 className="bookTitle">{this.state.book.title}</h5>
-                            <h6 style={{ display: 'block' }}><Link to={`/authors/${this.state.book.authorID}`} className="author-name" > by {this.state.book.author}</Link> </h6>
-                            <Link to={`/categories/${this.state.book.categoryID}`} className="book-category"  >{this.state.book.category}</Link>
 
-                            {/* <h6>{this.state.book.author}</h6>
-                            <h6>{this.state.book.category}</h6> */}
+                            <h6 style={{ display: 'block' }}><Link to={`/authors/${this.state.book.authorID}`} className="author-name" >
+                                by {this.state.book.authorID}</Link> </h6>
+                            <Link to={`/categories/${this.state.book.categoryID}`} className="book-category">{this.state.book.categoryID}</Link>
                             <span>
                                 {<Rating rating={this.state.book.rating} />}
                                 <span className="avgRate">{this.state.book.avgrating}</span>

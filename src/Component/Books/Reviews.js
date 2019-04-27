@@ -8,7 +8,7 @@ const Reviews = (props) => {
             return reviews.map((review) => {
                 return (
 
-                    <div key={review.id}>
+                    <div key={review._id}>
                         <h6 className="author-details-bok-title reader-name">{review.name}</h6>
                         <img src={review.cover} alt={review.cover}></img>
                         <span className="book-details-stars ">
@@ -17,7 +17,7 @@ const Reviews = (props) => {
                             {<Rating rating={review.rate} />}
                         </span>
                         <p className="bio">
-                            {review.review}
+                            {review.reviewDetails}
                         </p>
 
                     </div>
