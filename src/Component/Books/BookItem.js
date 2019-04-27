@@ -42,10 +42,10 @@ class Book extends Component {
             <div>
               <Link
                 className="author-details-author-title"
-                to={`/authors/${authorID}`}
+                to={`/authors/${authorID._id}`}
                 style={{ textDecoration: "none" }}
               >
-                {author}
+                {authorID.name}
               </Link>
             </div>
             <span className="book-details-stars author-details-book-rating ">
