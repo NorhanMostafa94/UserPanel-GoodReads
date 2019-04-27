@@ -18,7 +18,7 @@ class Rating extends Component {
         for (let i = this.state.s; i <=5 ; i++) {
             stars.push(<i className="far fa-star" key={uuidv4()} onMouseOver={this.onHover(i)} onClick={this.starClick(i)}></i>)
             this.state.e=rating;        
-            console.log(this.state.s)
+            // console.log(this.state.s)
         }
         // this.starClick()
         return stars

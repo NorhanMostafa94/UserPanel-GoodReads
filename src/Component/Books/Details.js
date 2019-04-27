@@ -65,13 +65,19 @@ class BookDetails extends Component {
                             <h5 className="bookTitle">{this.state.book.title}</h5>
 
                             {
-                                this.state.book.authorID || this.state.categoryID ? 
+                                this.state.book.authorID  ? 
                                 <>
                                 <h6 style={{ display: 'block' }}><Link to={`/authors/${this.state.book.authorID._id}`} className="author-name" >
                                     by {this.state.book.authorID.name}</Link> </h6>
-                                <Link to={`/categories/${this.state.book.categoryID}`} className="book-category">{this.state.book.categoryID}</Link>
                             </>
                             : console.log("err")
+                            }
+                            {
+                                this.state.book.categoryID  ? 
+                                <>
+                                <Link to={`/categories/${this.state.book.categoryID._id}`} className="book-category">{this.state.book.categoryID.name}</Link>
+                            </>
+                            : ''
                             }
                             <span>
                                 {<Rating rating={this.state.book.rating} />}
