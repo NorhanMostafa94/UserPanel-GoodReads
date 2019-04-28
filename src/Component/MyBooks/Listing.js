@@ -4,7 +4,7 @@ import Table from 'react-bootstrap/Table';
 import Dropdown from 'react-bootstrap/Dropdown';
 import Paging from '../shared/Pagination';
 import Rating from '../Books/Rating';
-import {Link} from 'react-router-dom'
+import { Link } from 'react-router-dom'
 const Listing = (props) => {
 
 
@@ -38,18 +38,18 @@ const Listing = (props) => {
                                    {book.shelve}
                                     </Dropdown.Toggle>
 
-                                <Dropdown.Menu>
-                                    <Dropdown.Item href="#/action-1">Currently Reading</Dropdown.Item>
-                                    <Dropdown.Item href="#/action-2">Read</Dropdown.Item>
-                                    <Dropdown.Item href="#/action-3">Want to Read</Dropdown.Item>
-                                </Dropdown.Menu>
-                            </Dropdown>
-                        </td>
-                    </tr>
+                                    <Dropdown.Menu>
+                                        <Dropdown.Item href="#/action-1">Currently Reading</Dropdown.Item>
+                                        <Dropdown.Item href="#/action-2">Read</Dropdown.Item>
+                                        <Dropdown.Item href="#/action-3">Want to Read</Dropdown.Item>
+                                    </Dropdown.Menu>
+                                </Dropdown>
+                            </td>
+                        </tr>
 
 
 
-                )
+                    )
                 }
             })
         }

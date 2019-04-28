@@ -15,7 +15,6 @@ class Book extends Component {
     const {
       _id,
       title,
-      author,
       cover,
       authorID,
       rating,
