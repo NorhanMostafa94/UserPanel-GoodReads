@@ -30,7 +30,7 @@ class Rating extends Component {
             o=index;
             // console.log(index)
         }
-        for (let i = o; i <=5 ; i++) {
+        for (let i = o; i <5 ; i++) {
             stars.push(<i className="far fa-star" key={uuidv4()}  onClick={this.starClick(i)}></i>)
             // this.state.e=i;        
             // console.log(this.state.e)
