@@ -47,12 +47,12 @@ class Book extends Component {
                 {authorID.name}
               </Link>
             </div>
-            <span className="book-details-stars author-details-book-rating ">
+            {/* <span className="book-details-stars author-details-book-rating ">
               {<Rating key={_id} rating={rating} />}
             </span>
             <span className="book_avg author-details-book-AVGrating ">
               {avgrating}
-            </span>
+            </span> */}
           </Card.Body>
         </Card>
         // </Col>

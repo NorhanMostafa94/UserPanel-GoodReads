@@ -8,40 +8,34 @@ import { Link } from 'react-router-dom'
 const Listing = (props) => {
 
 
-    const displayBooks = ({ books }) => {
+    const displayBooks = ({ books,ID }) => {
         console.log(books)
+        // console.log(ID)
         if ({ books }) {
             return books.map((book) => {
-                if (book.book ) {
-                    console.log(book.book)
-                    console.log(book.book.authorID)
-                   
+                if(book.book){
+                    console.log(book.book._id)
+                return (
 
-                    return (
-
-                        <tr key={book._id} >
-                            <td><img src={book.book.cover} alt="" className="image-listing" /></td>
-                            <td>
-                                <Link to={`/books/${book.book._id}`} className="myBook-bokTitle" >{book.book.title}</Link>
-                            </td>
-                            {
-                                book.book.authorID ?
-                                    <>
-                                        <td>
-                                            <Link to={`/authors/${book.book.authorID._id}`} className="myBook-bokTitle">{book.book.authorID.name}</Link>
-                                        </td>
-                                    </>
-                                    : console.log("err")
-                            }
-
-                            <td className="myBook-bokTitle">{book.book.avgrating}</td>
-                            <td>
-                                {<Rating key={book._id} rating={book.rating} />}
-                            </td>
-                            <td>
-                                <Dropdown>
-                                    <Dropdown.Toggle variant="success" id="dropdown-basic" className="drobDWON">
-                                        {book.shelve}
+                    <tr key={book._id} >
+                        <td><img src={book.book.cover} alt="" className="image-listing" /></td>
+                        {/* <td>{book.title}</td> */}
+                        <td>
+                            <Link to={`/books/${book.book._id}`} className="myBook-bokTitle" >{book.book.title}</Link>
+                        </td>
+                        {/* <td>{book.author}</td> */}
+                        <td>
+                            <Link to={`/authors/${book.book.authorID}`} className="myBook-bokTitle">{book.book.authorID.name}</Link>
+                        </td>
+                        <td className="myBook-bokTitle">{book.book.avgrating}</td>
+                        <td>
+                            {/* {rating(book.rating)} */}
+                            {<Rating key={book._id} rating={book.rating} ID={ID} bookId={book.book._id} />}
+                        </td>
+                        <td>
+                            <Dropdown>
+                                <Dropdown.Toggle variant="success" id="dropdown-basic" className="drobDWON">
+                                   {book.shelve}
                                     </Dropdown.Toggle>
 
                                     <Dropdown.Menu>

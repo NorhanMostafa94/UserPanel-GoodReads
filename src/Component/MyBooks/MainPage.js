@@ -12,11 +12,13 @@ class MainPage extends Component {
             // books: AllBooks,
             // data: AllBooks
             books: [],
-            data: []
+            data: [],
+            ID:0
         }
     }
     componentDidMount() {
-        const ID = "5cc42d74d2f2fb43acae162d";
+        const ID = "5cc4312ece268b3ab8ec5419";
+        this.setState({ID})
         // const ID = this.props.match.params.id;
         getUserBooks(ID)
             .then(res => {
@@ -29,7 +31,7 @@ class MainPage extends Component {
     }
 
     handleClick = (event) => {
-         const ID = "5cc42d74d2f2fb43acae162d";
+         const ID = "5cc4312ece268b3ab8ec5419";
         event.preventDefault();
         const name = event.target.name;
         // console.log(name)
@@ -70,7 +72,6 @@ class MainPage extends Component {
 
     }
     render() {
-
         return (
             <>
                 <NavBar />
@@ -93,7 +94,7 @@ class MainPage extends Component {
                             <button onClick={this.handleClick} name="wantToRead" className="books-link">Want to read</button>
                         </div>
                         <div className="col-9 listing">
-                            {<Listing books={this.state.books} ></Listing>}
+                            {<Listing books={this.state.books} ID={this.state.ID}></Listing>}
                         </div>
                     </div>
                 </div>
