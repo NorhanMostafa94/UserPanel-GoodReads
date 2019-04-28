@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import "../../../node_modules/bootstrap/dist/css/bootstrap.min.css";
 //  import BookAuthor from '../Authors/Books'
-// import { authors } from "../../data";
+import { Link } from 'react-router-dom'
 import Book from '../Books/BookItem'
 import { Row, Col } from "react-bootstrap";
 import { getAuthorById } from '../../API/author';
@@ -28,13 +28,10 @@ class AuthorDetails extends Component {
 
         this.setState({ author: auth });
 
+        console.log(this.state.author)
       })
       .catch(err => console.log(err))
-    console.log(this.state.author)
 
-    // const foundedAuthor = this.state.authors.filter(author => {
-    //   return author.id === Number(ID);
-    // });
   }
 
   render() {
@@ -63,14 +60,22 @@ class AuthorDetails extends Component {
               </p>
               <p>
                 <span className="title">Website:</span>
-                <span className="author-web title">
+                <Link to="#" className="author-web title">
                   {this.state.author.website}
-                </span>
+                </Link>
               </p>
-              <span className="title">Genre:</span>
-              <span className="author-bio title">
-                {this.state.author.genre}
-              </span>
+              {
+                this.state.author.genre ?
+                  <>
+                  
+                    <span className="title">Genre:</span>
+                    <span className="author-bio title">
+                      {this.state.author.genre.name}
+                    </span>
+                  </>
+                  : console.log("err")
+              }
+
               <p className="bio">{this.state.author.bio}</p>
             </div>
           </div>
