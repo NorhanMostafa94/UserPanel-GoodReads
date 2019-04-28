@@ -14,8 +14,10 @@ import "../node_modules/bootstrap/dist/css/bootstrap.min.css";
 import Routing from "./Routing/Routing";
 
 import { categories, authors, books, users } from "./data";
+import {register, login} from "./API/user";
 
 import "./App.css";
+
 
 export const Context = React.createContext();
 
@@ -37,7 +39,25 @@ class App extends Component {
   };
   addUser = user => {
     this.setState({ users: users.concat(user) });
+    register({firstname: user.firstname,lastname:user.lastname,email:user.email,password:user.password})
+    .then({
+
+    })
+    .catch({
+
+    })
   };
+  handlelogin= user=>{
+    
+   login({firstname: user.firstname,password:user.password})
+    .then(res=>{
+
+        console.log(res)
+    })
+    .catch(err=>{
+      console.log(err)
+    })
+  }
   SearchRes = books => {
     const popBooks = this.state.popBooks;
     this.setState({ searchResult: books, popBooks: popBooks.concat(books) });
@@ -51,7 +71,8 @@ class App extends Component {
       state: this.state,
       getCategories: this.getCategories,
       addUser: this.addUser,
-      SearchRes: this.SearchRes
+      SearchRes: this.SearchRes,
+      handlelogin:this.handlelogin
     };
     return (
       //<BookDetails />
