@@ -8,12 +8,13 @@ import {Link} from 'react-router-dom'
 const Listing = (props) => {
 
 
-    const displayBooks = ({ books }) => {
+    const displayBooks = ({ books,ID }) => {
         console.log(books)
+        // console.log(ID)
         if ({ books }) {
             return books.map((book) => {
                 if(book.book){
-                    console.log(book.book)
+                    console.log(book.book._id)
                 return (
 
                     <tr key={book._id} >
@@ -24,12 +25,12 @@ const Listing = (props) => {
                         </td>
                         {/* <td>{book.author}</td> */}
                         <td>
-                            <Link to={`/authors/${book.book.authorID}`} className="myBook-bokTitle">{book.book.authorID}</Link>
+                            <Link to={`/authors/${book.book.authorID}`} className="myBook-bokTitle">{book.book.authorID.name}</Link>
                         </td>
                         <td className="myBook-bokTitle">{book.book.avgrating}</td>
                         <td>
                             {/* {rating(book.rating)} */}
-                            {<Rating key={book._id} rating={book.rating} />}
+                            {<Rating key={book._id} rating={book.rating} ID={ID} bookId={book.book._id} />}
                         </td>
                         <td>
                             <Dropdown>
