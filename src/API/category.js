@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const BACKEND_URL = process.env.REACT_APP_BACKEND_URL || 'http://localhost:3000';
+const BACKEND_URL = "https://goodreadsbackend.herokuapp.com" || 'http://localhost:3000';
 
 export const getCategories = () => {
     return axios.get(`${BACKEND_URL}/api/categories`)

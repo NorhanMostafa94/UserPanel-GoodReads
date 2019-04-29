@@ -1,5 +1,5 @@
 import axios from 'axios';
-const BACKEND_URL = process.env.REACT_APP_BACKEND_URL || 'http://localhost:3000';
+const BACKEND_URL = "https://goodreadsbackend.herokuapp.com" || 'http://localhost:3000';
 
 export const register = ({ firstname, lastname, email, password }) => {
     // debugger;
@@ -10,23 +10,39 @@ export const register = ({ firstname, lastname, email, password }) => {
         .then(res => res.data)
     // debugger;
 }
+const id = 0;
 
-export const login =  ({ firstname, password }) => {
+export const login = ({ firstname, password }) => {
     //debugger
-    return  axios.post(`${BACKEND_URL}/api/users/login`, {
+    return axios.post(`${BACKEND_URL}/api/users/login`, {
 
         firstname, password
 
     })
         .then(res => {
-         //   debugger
-            console.log(res)
-           // debugger
+            //   debugger
+            console.log(res.data.profile._id)
+            // debugger
             return res.data
-            
+
         })
-    debugger;
 }
 
+export const getUserBooks =async () => {
+    const books=await axios.get(`${BACKEND_URL}/api/usersbooks/${id}`)
+        return  books.data
+}
+
+export const getProfile = () => {
+    return axios.get(`${BACKEND_URL}/api/users/profile`, {
+
+        headers: {
+            authorization: `Bearer ${localStorage.getItem("usertoken")}`
+        }
+    }).then(res => {
+        return res.data
+
+    })
+}
 
 

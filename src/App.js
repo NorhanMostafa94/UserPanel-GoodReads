@@ -28,7 +28,8 @@ class App extends Component {
     books: books,
     users: users,
     searchResult: [],
-    popBooks: books.filter(e => Number(e.avgrating) > 4 && e.reviews.length > 1)
+    popBooks: books.filter(e => Number(e.avgrating) > 4 && e.reviews.length > 1),
+    loggedUser:{}
   };
 
   getCategories = categories => {

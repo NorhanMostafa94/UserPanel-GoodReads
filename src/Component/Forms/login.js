@@ -3,10 +3,8 @@ import { withRouter} from 'react-router';
 import {Context} from '../../App';
 import img from '../../assets/images/7.png';
 import {Link} from 'react-router-dom';
-import {login} from '../../API/user';
-// import AuthorsList from '../../Component/Authors/List';
-// import MainPage from '../../Component/MyBooks/MainPage';
-// import {Redirect } from 'react-router';
+import {login, getProfile} from '../../API/user';
+
 
 
 const intState={
@@ -16,7 +14,8 @@ const intState={
         // pwErr:'',
         loginErr:'',
         admin:true,
-        result:0
+        result:0,
+        
 }
 
 class Login extends Component {
@@ -118,7 +117,11 @@ class Login extends Component {
             console.log("loginnnnnnn")
             // debugger
             localStorage.setItem('usertoken',res.token)
+            getProfile().then({}).catch(err=>{
+                console.log(err)
+            })
             this.setState({loginErr:""})
+            
            // handleLogin(res.profile)
            this.props.history.push("/home")
         //    debugger
