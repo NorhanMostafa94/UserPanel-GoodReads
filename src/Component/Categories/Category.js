@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-import { Container } from 'react-bootstrap';
+import { Container,Row } from 'react-bootstrap';
 
 import Book from '../Books/BookItem'
 import Paging from '../shared/Pagination';
@@ -32,10 +32,10 @@ class CategoryItem extends Component {
                     <h1 className="cat-header-text">{this.state.category.name}</h1>
                 </div>
                 <Container className="card-container" >
-                    {/* <Row className="justify-content-md-center"> */}
+                    <Row className="justify-content-md-center">
                         {this.state.category.books ? this.state.category.books.map(c => <Book key={c._id} {...c}></Book>) : console.log("error")}
                         {console.log(this.state.category.books)}
-                    {/* </Row> */}
+                    </Row>
                   
                 </Container>
             </div>
