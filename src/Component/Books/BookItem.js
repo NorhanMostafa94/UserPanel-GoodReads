@@ -24,7 +24,7 @@ class Book extends Component {
     if (this.props) {
       return (
         // <Col sm={3}>
-        <Card className="card-item col-sm-3">
+        <Card className="col-sm-3">
           <Card.Body>
             <Card.Img
               style={{ height: "300px", boxShadow: "0px 3px 5px 0px #adadab" }}
