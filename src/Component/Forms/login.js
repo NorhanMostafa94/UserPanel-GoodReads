@@ -89,14 +89,14 @@ class Login extends Component {
  
    
     
-    handleSubmit=(handlelogin)=>(e)=>{
+    handleSubmit=(e)=>{
         console.log("hiiiiiii")
         e.preventDefault();
-        debugger;
+        // debugger;
         //this.handleLogin()
        // handleLogin(this.state.firstname,this.state.password)
        const{firstname,password}=this.state;
-       debugger
+    //    debugger
        if(!firstname && !password){
         this.setState({loginErr:"please enter the nameand the password"})
        }
@@ -108,18 +108,20 @@ class Login extends Component {
            }
            
        else{
+           console.log("hello")
         // login({firstname,password})
-        debugger
-        const userlogin= {firstname:this.state.firstname, password:this.state.password}
-        handlelogin(userlogin)
+        // debugger
+        // const userlogin= {firstname:this.state.firstname, password:this.state.password}
+        // handlelogin(userlogin)
+        login({firstname:this.state.firstname, password:this.state.password})
         .then(res=>{
             console.log("loginnnnnnn")
-            debugger
+            // debugger
             localStorage.setItem('usertoken',res.token)
             this.setState({loginErr:""})
            // handleLogin(res.profile)
            this.props.history.push("/home")
-           debugger
+        //    debugger
         })
         .catch(err=>{
             this.setState({loginErr:"Incorrect email or password"})
@@ -136,7 +138,7 @@ class Login extends Component {
                         <div className="row my-2 login-cont  p-5">
                         <div className="col-md-4"></div>
                         <div className="col-md-4 mr-3  text-center">
-                        <form className="  form-group sign-cont login-container p-4 " action="/action_page.php" onSubmit={this.handleSubmit(value.handlelogin)}>
+                        <form className="  form-group sign-cont login-container p-4 "  onSubmit={this.handleSubmit}>
                         <div className="card-title mb-4">Welcome To Good Reads</div>
                         <div className="imgcontainer m-2"><img src={img} className="avatar" alt="login"/></div>
                         <input  type="text" name= "firstname" placeholder="Enter Your UserName" className="form-control my-2" value={this.state.firstname} onChange={this.handleChange}></input>

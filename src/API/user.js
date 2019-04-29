@@ -12,13 +12,19 @@ export const register = ({ firstname, lastname, email, password }) => {
 }
 
 export const login =  ({ firstname, password }) => {
-    debugger
+    //debugger
     return  axios.post(`${BACKEND_URL}/api/users/login`, {
 
         firstname, password
 
     })
-        .then(res => res.data)
+        .then(res => {
+         //   debugger
+            console.log(res)
+           // debugger
+            return res.data
+            
+        })
     debugger;
 }
 
