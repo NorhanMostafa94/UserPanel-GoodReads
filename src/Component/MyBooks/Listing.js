@@ -24,7 +24,7 @@ const Listing = (props) => {
                         </td>
                         {/* <td>{book.author}</td> */}
                         <td>
-                            <Link to={`/authors/${book.book.authorID}`} className="myBook-bokTitle">{book.book.authorID.name}</Link>
+                            <Link to={`/authors/${book.book.authorID._id}`} className="myBook-bokTitle">{book.book.authorID.name}</Link>
                         </td>
                         <td className="myBook-bokTitle">{book.book.avgrating}</td>
                         <td>
