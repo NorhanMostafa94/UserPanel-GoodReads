@@ -7,7 +7,6 @@ import Rating from '../Books/Rating';
 import { Link } from 'react-router-dom'
 const Listing = (props) => {
 
-
     const displayBooks = ({ books,ID }) => {
         console.log(books)
         // console.log(ID)
@@ -71,7 +70,7 @@ const Listing = (props) => {
                     {displayBooks(props)}
                 </tbody>
             </Table>
-            <Paging />
+           
         </>
     )
 }

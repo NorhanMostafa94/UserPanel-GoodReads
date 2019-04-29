@@ -28,7 +28,7 @@ class BooksList extends Component {
               <Book key={d._id} {...d} />
             ))}
           {/* </Row> */}
-          <Paging />
+       
         </Container>
       </>
     );
