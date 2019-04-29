@@ -45,10 +45,13 @@ class BookDetails extends Component {
                                 </Dropdown.Toggle>
 
                                 <Dropdown.Menu>
-                                    <Dropdown.Item href="#/action-1">Currently Reading</Dropdown.Item>
-                                    <Dropdown.Item href="#/action-2">Read</Dropdown.Item>
-                                    <Dropdown.Item href="#/action-3">Want to Read</Dropdown.Item>
+                                    <Dropdown.Item>Currently Reading</Dropdown.Item>
+                                    <Dropdown.Item>Read</Dropdown.Item>
+                                    <Dropdown.Item>Want to Read</Dropdown.Item>
                                 </Dropdown.Menu>
+                                {/* onClick={this.updateShelve("currently reading")} */}
+                                {/* onClick={this.updateShelve("read")} */}
+                                {/* onClick={this.updateShelve("want to read")} */}
                             </Dropdown>
                             <span>
                                 <div className="rate-header">Rate this book</div>

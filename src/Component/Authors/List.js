@@ -36,7 +36,7 @@ class AuthorsList extends Component {
                   // <Book key={d.id} {...d}></Book>
                 )}
               </Row>
-              <Paging />
+              
             </Container>
           </>
     );

@@ -36,7 +36,7 @@ class CategoryItem extends Component {
                         {this.state.category.books ? this.state.category.books.map(c => <Book key={c._id} {...c}></Book>) : console.log("error")}
                         {console.log(this.state.category.books)}
                     {/* </Row> */}
-                    <Paging />
+                  
                 </Container>
             </div>
             // )

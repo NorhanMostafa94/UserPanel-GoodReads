@@ -28,7 +28,15 @@ const userbooks = await axios.get(`${BACKEND_URL}/api/usersbooks/${readBook}/${u
 
 }
 
+export const updateBookShelve = async (userId,bookId,shelve) => {
+
+    const userbooks = await axios.patch(`${BACKEND_URL}/api/usersbooks/${userId}/${bookId}/${shelve}`)
+        return userbooks.data;
+    
+    }
+
 export const updateRating = async (userId,bookId,rating) =>{
     const userBookRate = await axios.patch(`${BACKEND_URL}/api/usersbooks/rating/${userId}/${bookId}/${rating}`)
     return userBookRate.data;
 }
+
