@@ -247,6 +247,10 @@ a {
     background-position: center;
 }
 
+.signup-cont{
+    background-image: url("../assets/images/2.jpg");
+    background-position: center;
+}
 .login-container {
     background-color: #d7ced7 !important;
 }

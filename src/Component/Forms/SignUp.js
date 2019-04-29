@@ -3,6 +3,7 @@ import uuidv4 from 'uuid/v4';
 import {validateEmail,isEmpty,length} from '../../Component/Forms/Validator';
 import BookCard from '../Search/BookCard';
 import SearchBar from '../../Component/Search/Search';
+import img from '../../assets/images/book.jpg';
 import {Context} from '../../App';
 
 const initialState={
@@ -95,10 +96,10 @@ handleSubmit =(addUser)=> (e) => {
                     value => (
                         <>
                         <SearchBar/>
-                            <div className="row mt-5">
+                            <div className="row mt-5 signup-cont ">
                                 <div className="col-md-7 popular text-center mx-3 ">
                                     {/* {console.log(value.state.popBooks)} */}
-                                    <div className="col-md-12 ml-1 popular" >
+                                    {/* <div className="col-md-12 ml-1 popular" >
 
 
                                         <div className="pop-title ">Popular Books</div>
@@ -108,7 +109,9 @@ handleSubmit =(addUser)=> (e) => {
                                                 <BookCard key={uuidv4()+e.id} title={e.title} id={e.id} src={e.cover} />
 
                                         )}
-                                    </div>
+                                    </div> */}
+
+                                    {/* <div className="imgcontainer m-2"><img src={img} className="avatar" alt="signup"/></div> */}
                                 </div>
                                 <form onSubmit={this.handleSubmit(value.addUser)} className="col-md-4 mr-3  text-center  ">
 
